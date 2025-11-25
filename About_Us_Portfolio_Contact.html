@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Professional Business Solutions - About Us, Portfolio, and Contact pages">
+    <meta name="keywords" content="about us, portfolio, contact, web development, digital agency">
+    <meta name="author" content="Professional Business Solutions">
+    <title>About Us | Professional Business Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ------------------------------------
+           GLOBAL STYLES
+        ------------------------------------ */
+        :root {
+            --primary: #003366;
+            --primary-light: #004080;
+            --secondary: #005599;
+            --accent: #4A90E2;
+            --accent-light: #6AA8F4;
+            --light: #eef0f3;
+            --dark: #333;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: var(--gray);
+        }
+
+        /* ------------------------------------
+           HEADER
+        ------------------------------------ */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23002244" fill-opacity="0.2" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,128C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 15px 0 0;
+            opacity: 0.9;
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ------------------------------------
+           NAVIGATION
+        ------------------------------------ */
+        nav {
+            background: var(--primary-light);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        nav a {
+            color: #dbe8ff;
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a.active {
+            color: var(--white);
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--white);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ------------------------------------
+           PAGE SECTIONS
+        ------------------------------------ */
+        .page-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* About Page Styles */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .member-img {
+            height: 250px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            margin: 0 0 5px;
+            color: var(--primary);
+        }
+
+        .member-info .position {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Portfolio Page Styles */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+            background: var(--white);
+        }
+
+        .portfolio-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Contact Page Styles */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .map-container {
+            margin-top: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* ------------------------------------
+           FOOTER
+        ------------------------------------ */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-top: 0;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-section a {
+            color: #dbe8ff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ------------------------------------
+           ANIMATION
+        ------------------------------------ */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ------------------------------------
+           RESPONSIVE DESIGN
+        ------------------------------------ */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-light);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            nav a {
+                margin: 10px 0;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            nav a:last-child {
+                border-bottom: none;
+            }
+            
+            .portfolio-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-section {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>About Professional Business Solutions</h1>
+        <p>Learn more about our company, mission, and the team behind our success</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><i class="fas fa-rocket"></i> PROSOLUTIONS</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a>
+                <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+                <a href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Us Page Content -->
+    <section class="page-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Founded in 2010, Professional Business Solutions has grown from a small startup to a leading digital agency serving clients worldwide. Our journey began with a simple mission: to help businesses leverage technology to achieve their goals.</p>
+                <p>Over the years, we've expanded our services and expertise, but our core values remain the same: integrity, innovation, and client success. We believe in building long-term partnerships with our clients, working collaboratively to create solutions that drive real business results.</p>
+                <p>Our team of experienced professionals brings together diverse skills and perspectives, allowing us to tackle complex challenges and deliver innovative solutions that exceed expectations.</p>
+                <a href="contact.html" class="btn btn-accent">Get In Touch</a>
+            </div>
+            
+            <div class="about-image">
+                <!-- Placeholder for image -->
+                <div style="background: var(--accent); height: 350px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Our Team Photo
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <h2>Our Team</h2>
+            <p>Meet the talented professionals behind our success</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-img" style="background: #4A90E2;">
+                    John Smith
+                </div>
+                <div class="member-info">
+                    <h3>John Smith</h3>
+                    <div class="position">CEO & Founder</div>
+                    <p>With over 15 years of experience in the tech industry, John leads our strategic vision and business development.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-img" style="background: #005599;">
+                    Sarah Johnson
+                </div>
+                <div class="member-info">
+                    <h3>Sarah Johnson</h3>
+                    <div class="position">Creative Director</div>
+                    <p>Sarah oversees all creative projects, ensuring our designs are both beautiful and effective.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-img" style="background: #003366;">
+                    Michael Chen
+                </div>
+                <div class="member-info">
+                    <h3>Michael Chen</h3>
+                    <div class="position">Lead Developer</div>
+                    <p>Michael leads our development team, specializing in creating robust and scalable web applications.</p>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-img" style="background: #4A90E2;">
+                    Emily Rodriguez
+                </div>
+                <div class="member-info">
+                    <h3>Emily Rodriguez</h3>
+                    <div class="position">Marketing Director</div>
+                    <p>Emily develops and executes marketing strategies that drive growth and engagement for our clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Page Content -->
+    <section class="page-section" style="background: var(--light); display: none;" id="portfolioPage">
+        <div class="section-title">
+            <h2>Our Portfolio</h2>
+            <p>Explore some of our recent projects and success stories</p>
+        </div>
+        
+        <div class="portfolio-categories">
+            <button class="category-btn active" data-category="all">All Projects</button>
+            <button class="category-btn" data-category="web">Web Development</button>
+            <button class="category-btn" data-category="mobile">Mobile Apps</button>
+            <button class="category-btn" data-category="design">UI/UX Design</button>
+            <button class="category-btn" data-category="marketing">Digital Marketing</button>
+        </div>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-img" style="background: #4A90E2;">
+                    E-commerce Website
+                </div>
+                <div class="portfolio-content">
+                    <h3>Global Retail Platform</h3>
+                    <p>Custom e-commerce solution with advanced inventory management and payment integration.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-img" style="background: #005599;">
+                    Mobile Application
+                </div>
+                <div class="portfolio-content">
+                    <h3>Fitness Tracking App</h3>
+                    <p>Cross-platform mobile application with real-time activity tracking and social features.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="design">
+                <div class="portfolio-img" style="background: #003366;">
+                    Corporate Website
+                </div>
+                <div class="portfolio-content">
+                    <h3>Corporate Branding</h3>
+                    <p>Complete website redesign with CMS integration for a multinational corporation.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="web">
+                <div class="portfolio-img" style="background: #4A90E2;">
+                    SaaS Platform
+                </div>
+                <div class="portfolio-content">
+                    <h3>Project Management Tool</h3>
+                    <p>Cloud-based project management solution with team collaboration features.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="marketing">
+                <div class="portfolio-img" style="background: #005599;">
+                    Marketing Campaign
+                </div>
+                <div class="portfolio-content">
+                    <h3>Brand Awareness Campaign</h3>
+                    <p>Multi-channel marketing campaign that increased brand recognition by 150%.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="mobile">
+                <div class="portfolio-img" style="background: #003366;">
+                    Banking App
+                </div>
+                <div class="portfolio-content">
+                    <h3>Mobile Banking Solution</h3>
+                    <p>Secure mobile banking application with biometric authentication and financial tools.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page Content -->
+    <section class="page-section" style="display: none;" id="contactPage">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us to discuss your project</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>123 Business Ave, Suite 100<br>New York, NY 10001</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>info@prosolutions.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h3>Working Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-accent" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-placeholder">
+                Interactive Map Would Appear Here
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>We are a full-service digital agency specializing in web development, mobile applications, and digital marketing solutions.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="services.html#web-development">Web Development</a>
+                <a href="services.html#mobile-apps">Mobile Apps</a>
+                <a href="services.html#digital-marketing">Digital Marketing</a>
+                <a href="services.html#seo-optimization">SEO Optimization</a>
+                <a href="services.html#ui-ux-design">UI/UX Design</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <form>
+                    <input type="email" placeholder="Your email address" style="padding: 8px; width: 100%; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ccc;">
+                    <button type="submit" class="btn btn-accent" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Professional Business Solutions | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Simple form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if(name && email && subject && message) {
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Portfolio filtering functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Show/hide portfolio items based on category
+                portfolioItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Page navigation simulation
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Get the page name from href
+                const pageName = this.getAttribute('href').split('.')[0];
+                
+                // Hide all pages
+                document.querySelector('.page-section').style.display = 'none';
+                document.getElementById('portfolioPage').style.display = 'none';
+                document.getElementById('contactPage').style.display = 'none';
+                
+                // Show the selected page
+                if (pageName === 'portfolio') {
+                    document.getElementById('portfolioPage').style.display = 'block';
+                    document.querySelector('header h1').textContent = 'Our Portfolio';
+                    document.querySelector('header p').textContent = 'Explore some of our recent projects and success stories';
+                } else if (pageName === 'contact') {
+                    document.getElementById('contactPage').style.display = 'block';
+                    document.querySelector('header h1').textContent = 'Contact Us';
+                    document.querySelector('header p').textContent = 'Get in touch with us to discuss your project';
+                } else if (pageName === 'about') {
+                    document.querySelector('.page-section').style.display = 'block';
+                    document.querySelector('header h1').textContent = 'About Professional Business Solutions';
+                    document.querySelector('header p').textContent = 'Learn more about our company, mission, and the team behind our success';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
